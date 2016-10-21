@@ -6,3 +6,9 @@ for i in a:
 b = ["房屋面积", "地段", "总价格", "每平米单价", "周围设施及交通"]
 for each in b:
     print (each, len(b), len(each))
+
+
+for i in range(10):
+    print(i)
+    i *= 2
+    print (i)
