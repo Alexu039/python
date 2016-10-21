@@ -1,6 +1,0 @@
-类型转换
-int()  截断(不做四舍五入)
-str()
-float()
-type() 识别数据类型
-isinstance(x,str/int/float/bool)
