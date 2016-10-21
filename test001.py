@@ -5,6 +5,9 @@ secret = random.randint(1,10)
 loop_cnt = 3
 temp = input("请猜测一个1-10的数字：")
 guess = int(temp)
+
+assert (1 <= guess <= 10)
+
 if guess == secret:
     print ("你猜对了，真棒！")
 elif guess > secret:
