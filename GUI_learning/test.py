@@ -8,6 +8,7 @@
 
 from PyQt5 import QtWidgets, QtCore
 from myDesigner import Ui_Dialog
+from PyQt5.QtWidgets import QMessageBox,QInputDialog,QLineEdit
 import sys
 
 # method1:
@@ -39,7 +40,7 @@ class myDesignershow(QtWidgets.QWidget,Ui_Dialog):
         super(myDesignershow,self).__init__()
         self.setupUi(self)
         self.pushButton1.clicked.connect(self.prn)#binding method to button
-        self.pushButton2.clicked.connect(self.close)#binding method to button
+        self.pushButton2.clicked.connect(self.getInput)#binding method to button
         self._signal.connect(self.mysignalslot)
     
     def prn(self):
@@ -47,11 +48,20 @@ class myDesignershow(QtWidgets.QWidget,Ui_Dialog):
         self._signal.emit("slot")
     
     def mysignalslot(self,parameter):
-        print(parameter)
+        result = QMessageBox.information(self,("This is title"), ("This is message~"),
+                                         QMessageBox.StandardButtons(QMessageBox.Yes |QMessageBox.No))
+        if result == QMessageBox.Yes:
+            print(parameter + ":YES")
+        else:
+            print(parameter + ":NO")
+
+    def getInput(self):
+        result, ok = QInputDialog.getText(self,("Standard Input Dialog"),("Prompt"),
+                                          QLineEdit.Normal,("default value"))
+        print (result,ok)
         
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     myshow = myDesignershow()
     myshow.show()
     sys.exit(app.exec_())
-\ No newline at end of file
