@@ -1,0 +1,16 @@
+cd C:\Users\IBM_ADMIN\AppData\Local\Programs\Python\Python35\Lib\site-packages\
+pyuic5 test.ui -o test.py
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    widget = QtWidgets.QWidget()
+    ui = Ui_Dialog()
+    ui.setupUi(widget)
+    widget.show()
+    sys.exit(app.exec_())
+    
+    
+绑定方法给按钮
+self.pushButton.clicked.connect(self.num1.copy)
